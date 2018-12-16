@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplication1.Models.ViewModels.Categories.CategoriesVM>
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories</h2>
+
+<p>
+    @Html.ActionLink("Create category", "CreateCategory")
+</p>
+
+@if (!Model.Any())
+{
+    <h1 class="text-center">No categories created :(</h1>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCategory", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteCategory", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>
+}
