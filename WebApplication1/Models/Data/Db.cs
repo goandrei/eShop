@@ -9,5 +9,6 @@ namespace WebApplication1.Models.Data
     public class Db : DbContext
     {
         public DbSet<CategoriesDTO> Categories { get; set; }
+        public DbSet<ItemsDTO> Items { get; set; }
     }
 }

@@ -156,12 +156,16 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminPageController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Collab\CollabAreaRegistration.cs" />
+    <Compile Include="Areas\Collab\Controllers\ItemsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\CategoriesDTO.cs" />
     <Compile Include="Models\Data\Db.cs" />
+    <Compile Include="Models\Data\ItemsDTO.cs" />
     <Compile Include="Models\ViewModels\Categories\CategoriesVM.cs" />
+    <Compile Include="Models\ViewModels\Items\ItemsVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +193,10 @@
     <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\CreateCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\EditCategory.cshtml" />
+    <Content Include="Areas\Collab\Views\web.config" />
+    <Content Include="Areas\Collab\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Collab\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Collab\Views\Items\AddItem.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -214,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Collab\Models\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
