@@ -16,6 +16,7 @@ namespace WebApplication1.Models.Data
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public int Score { get; set; }
+        public bool Status { get; set; }
         public string Image { get; set; }
 
         [ForeignKey("CategoryId")]

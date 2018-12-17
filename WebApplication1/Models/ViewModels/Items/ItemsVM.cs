@@ -25,6 +25,7 @@ namespace WebApplication1.Models.ViewModels.Items
             CategoryId = item.CategoryId;
             CategoryName = item.CategoryName;
             Score = item.Score;
+            Status = false;
             Image = item.Image;
         }
 
@@ -41,6 +42,7 @@ namespace WebApplication1.Models.ViewModels.Items
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public int Score { get; set; }
+        public bool Status { get; set; }
         public string Image { get; set; }
     }
 }
