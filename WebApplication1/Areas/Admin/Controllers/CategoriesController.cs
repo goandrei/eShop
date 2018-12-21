@@ -16,11 +16,11 @@ namespace WebApplication1.Areas.Admin.Controllers
         // GET: Admin/Categories
         public ActionResult Index()
         {
-            List<CategoriesVM> categories;
+            List<CategoryVM> categories;
 
             categories = db.Categories.
                          ToArray().
-                         Select(x => new CategoriesVM(x)).
+                         Select(x => new CategoryVM(x)).
                          ToList();
 
             return View(categories);
@@ -35,7 +35,7 @@ namespace WebApplication1.Areas.Admin.Controllers
 
         // POST: Admin/Categories/CreateCategory
         [HttpPost]
-        public ActionResult CreateCategory(CategoriesVM cat)
+        public ActionResult CreateCategory(CategoryVM cat)
         {
             if(!ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult EditCategory(int id)
         {
-            CategoriesVM cat;
+            CategoryVM cat;
 
             CategoriesDTO dto = db.Categories.Find(id);
             if(dto == null)
@@ -74,14 +74,14 @@ namespace WebApplication1.Areas.Admin.Controllers
                 return Content("The content doesn't exist");
             }
 
-            cat = new CategoriesVM(dto);
+            cat = new CategoryVM(dto);
 
             return View(cat);
         }
 
         // POST: Admin/Categories/EditCategory/id
         [HttpPost]
-        public ActionResult EditCategory(CategoriesVM cat)
+        public ActionResult EditCategory(CategoryVM cat)
         {
             CategoriesDTO dto = db.Categories.Find(cat.Id);
 
@@ -112,6 +112,8 @@ namespace WebApplication1.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+        
         
     }
 }

@@ -29,8 +29,6 @@ namespace WebApplication1.Models.ViewModels.Items
             Image = item.Image;
         }
 
-        public IEnumerable<SelectListItem> Categories { get; set; }
-
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
@@ -44,5 +42,8 @@ namespace WebApplication1.Models.ViewModels.Items
         public int Score { get; set; }
         public bool Status { get; set; }
         public string Image { get; set; }
+
+        public IEnumerable<SelectListItem> Categories { get; set; }
+        public IEnumerable<string> GalleryImages { get; set; }
     }
 }

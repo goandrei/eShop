@@ -56,7 +56,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="file" name="file" id="Image" />
+            <input type="file" name="file" id="ImageUpload" />
+            <img id ="imgPreview" src="#"/>
         </div>
     </div>
 
@@ -71,3 +72,36 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    <script>
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous
+    </script>
+    
+    <script>
+        $(function() {
+            //Preview selected image
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $("img#imgPreview")
+                            .attr("src", e.target.result)
+                            .width(200)
+                            .height(200);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#ImageUpload").
+            change(function() {
+                    readURL(this);
+                });
+        });
+    </script>
+}

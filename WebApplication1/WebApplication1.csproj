@@ -164,7 +164,7 @@
     <Compile Include="Models\Data\CategoriesDTO.cs" />
     <Compile Include="Models\Data\Db.cs" />
     <Compile Include="Models\Data\ItemsDTO.cs" />
-    <Compile Include="Models\ViewModels\Categories\CategoriesVM.cs" />
+    <Compile Include="Models\ViewModels\Categories\CategoryVM.cs" />
     <Compile Include="Models\ViewModels\Items\ItemsVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -222,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shop\" />
     <Folder Include="Areas\Collab\Models\" />
     <Folder Include="Controllers\" />
   </ItemGroup>

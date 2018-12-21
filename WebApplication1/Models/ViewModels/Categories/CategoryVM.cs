@@ -7,15 +7,15 @@ using WebApplication1.Models.Data;
 
 namespace WebApplication1.Models.ViewModels.Categories
 {
-    public class CategoriesVM
+    public class CategoryVM
     {
 
-        public CategoriesVM()
+        public CategoryVM()
         {
 
         }
 
-        public CategoriesVM(CategoriesDTO cat)
+        public CategoryVM(CategoriesDTO cat)
         {
             Id = cat.Id;
             Name = cat.Name;
