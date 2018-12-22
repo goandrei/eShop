@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using WebApplication1.Models.Data;
 using WebApplication1.Models.ViewModels.Items;
@@ -76,28 +77,31 @@ namespace WebApplication1.Areas.Collab.Controllers
                 Directory.CreateDirectory(path2);
             }
 
-            if(file != null && file.ContentLength > 0)
+            if (file != null && file.ContentLength > 0)
             {
                 string extension = file.ContentType.ToLower();
 
-                if(extension != "image/jpg" && extension != "image/jpeg" && extension != "image/png")
-                {
+                if (extension != "image/jpg" && extension != "image/jpeg" && extension != "image/png")
+                { 
                     item.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
-                    ModelState.AddModelError("", "the file extension isn't accepted :(");
+                    ModelState.AddModelError("", "The image was not uploaded - wrong image extension.");
                     return View(item);
                 }
+
+
+                string imageName = file.FileName;
+
+                ItemsDTO dto1 = db.Items.Find(id);
+                dto1.Image = imageName;
+
+                db.SaveChanges();
+
+                file.SaveAs(string.Format("{0}\\{1}", path2, imageName));
+
+                WebImage img = new WebImage(file.InputStream);
+                img.Resize(200, 200);
+                img.Save(path2);
             }
-
-            string imageName = file.FileName;
-
-            ItemsDTO dto1 = db.Items.Find(id);
-            dto1.Image = imageName;
-
-            db.SaveChanges();
-
-            file.SaveAs(string.Format("{0}\\{1}", path2, imageName));
-
-            //TODO : upload image
 
             return RedirectToAction("AddItem");
         }
