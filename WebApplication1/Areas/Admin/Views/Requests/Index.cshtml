@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplication1.Models.ViewModels.Requests.RequestsVM>
+
+@{
+    ViewBag.Title = "Requests";
+}
+
+<h2>Requests</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemId)
+        </td>
+        <td>
+            @Html.ActionLink("View Item", "ViewItem", new { id = item.ItemId }) |
+            @Html.ActionLink("Accept", "AcceptRequest", new { reqId = item.Id, itemId = item.ItemId }) |
+            @Html.ActionLink("Decline", "DeclineRequest", new { reqId = item.Id, itemId = item.ItemId })
+        </td>
+    </tr>
+}
+
+</table>
