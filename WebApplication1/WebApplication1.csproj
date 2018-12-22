@@ -156,6 +156,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminPageController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RequestsController.cs" />
     <Compile Include="Areas\Collab\CollabAreaRegistration.cs" />
     <Compile Include="Areas\Collab\Controllers\ItemsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,6 +200,7 @@
     <Content Include="Areas\Collab\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Collab\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Collab\Views\Items\AddItem.cshtml" />
+    <Content Include="Areas\Admin\Views\Requests\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -224,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Items\" />
     <Folder Include="Areas\Admin\Views\Shop\" />
     <Folder Include="Areas\Collab\Models\" />
     <Folder Include="Controllers\" />
