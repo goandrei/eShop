@@ -10,5 +10,6 @@ namespace WebApplication1.Models.Data
     {
         public DbSet<CategoriesDTO> Categories { get; set; }
         public DbSet<ItemsDTO> Items { get; set; }
+        public DbSet<RequestsDTO> Requests { get; set; }
     }
 }

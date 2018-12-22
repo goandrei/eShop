@@ -60,6 +60,14 @@ namespace WebApplication1.Areas.Collab.Controllers
 
             TempData["Status"] = "The item was added! <3";
 
+            //also insert the item in the request table for approval
+            RequestsDTO dto2 = new RequestsDTO();
+            dto2.UserId = 0;
+            dto2.ItemId = dto.Id;
+
+            db.Requests.Add(dto2);
+            db.SaveChanges();
+
             int id = dto.Id;
 
             var directory = new DirectoryInfo(string.Format("{0}Images\\Uploads", Server.MapPath(@"\")));
