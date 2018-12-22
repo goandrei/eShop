@@ -48,7 +48,6 @@ namespace WebApplication1.Areas.Collab.Controllers
             dto.Description = item.Description;
             dto.Price = item.Price;
             dto.Score = -1;
-            dto.Status = false;
             dto.CategoryId = item.CategoryId;
 
             CategoriesDTO catDto = db.Categories.FirstOrDefault(x => x.Id == item.CategoryId);
