@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebApplication1.Models.ViewModels.Items.ItemsVM>
+
+@{
+    ViewBag.Title = "Items";
+}
+@using PagedList.Mvc;
+@using PagedList;
+
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h2>Items</h2>
+
+<select id="SelectedCategory" name="SelectedCategory">
+    <option value="0">All</option>
+
+    @foreach (var item in ViewBag.Categories)
+    {
+        if (ViewBag.SelectedCat == item.Value)
+        {
+            <option selected="selected" value="@item.Value">@item.Text</option>
+        }
+        else
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    }
+</select>
+<br /><br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Score
+        </th>
+        <th>
+            Image
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.OnePageOfItems)
+    {
+        <tr>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.Price RON
+            </td>
+            <td>
+                @item.Score
+            </td>
+            <td>
+                <img src="\Images\Uploads\Items@(item.Id)\@item.Image" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditItem", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteProduct", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfItems, page => Url.Action("Items", new { page, catID = ViewBag.SelectedCat }))
