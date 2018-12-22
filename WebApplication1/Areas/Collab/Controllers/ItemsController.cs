@@ -107,7 +107,7 @@ namespace WebApplication1.Areas.Collab.Controllers
 
                 WebImage img = new WebImage(file.InputStream);
                 img.Resize(200, 200);
-                img.Save(path2);
+                img.Save(path2, "png", true);
             }
 
             return RedirectToAction("AddItem");
