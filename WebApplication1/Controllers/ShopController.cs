@@ -100,6 +100,8 @@ namespace WebApplication1.Controllers
                 db.Items.Remove(dto);
                 db.SaveChanges();
 
+                TempData["Status"] = "Item deleted! <3";
+
                 return RedirectToAction("Items");
             }
         }
