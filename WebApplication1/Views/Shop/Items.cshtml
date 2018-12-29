@@ -27,6 +27,13 @@
 </select>
 <br /><br />
 
+@if (TempData["Status"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Status"]
+    </div>
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -66,11 +73,11 @@
                 @item.Score
             </td>
             <td>
-                <img src="\Images\Uploads\Items@(item.Id)\@item.Image" />
+                <img src="~/Images/Uploads/Items@(item.Id).png" />
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditItem", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "DeleteProduct", new { id = item.Id })
+                @Html.ActionLink("Delete", "DeleteItem", new { id = item.Id })
             </td>
         </tr>
     }
