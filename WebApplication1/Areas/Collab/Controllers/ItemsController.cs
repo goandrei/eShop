@@ -75,14 +75,14 @@ namespace WebApplication1.Areas.Collab.Controllers
             var path1 = Path.Combine(directory.ToString(), "Items");
             var path2 = Path.Combine(directory.ToString(), "Items" + id.ToString());
 
-            if(!Directory.Exists(path1))
-            {
-                Directory.CreateDirectory(path1);
-            }
-            if(!Directory.Exists(path2))
-            {
-                Directory.CreateDirectory(path2);
-            }
+            //if (!Directory.Exists(path1))
+            //{
+            //    Directory.CreateDirectory(path1);
+            //}
+            //if (!Directory.Exists(path2))
+            //{
+            //    Directory.CreateDirectory(path2);
+            //}
 
             if (file != null && file.ContentLength > 0)
             {
@@ -103,7 +103,7 @@ namespace WebApplication1.Areas.Collab.Controllers
 
                 db.SaveChanges();
 
-                file.SaveAs(string.Format("{0}\\{1}", path2, imageName));
+                file.SaveAs(string.Format("{0}.png", path2));
 
                 WebImage img = new WebImage(file.InputStream);
                 img.Resize(200, 200);

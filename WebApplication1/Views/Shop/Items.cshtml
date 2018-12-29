@@ -5,6 +5,7 @@
 }
 @using PagedList.Mvc;
 @using PagedList;
+@using WebApplication1.Areas.Collab
 
 <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -35,7 +36,7 @@
 }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add new item", "Items/AddItem", "Collab", new {area = ""}, null)
 </p>
 <table class="table">
     <tr>
