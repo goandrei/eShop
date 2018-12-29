@@ -263,3 +263,5 @@ paket-files/
 __pycache__/
 *.pyc
 
+WebApplication1/App_Data/eShop.mdf
+WebApplication1/App_Data/eShop_log.ldf
