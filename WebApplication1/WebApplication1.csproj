@@ -233,12 +233,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shop\Items.cshtml" />
     <Content Include="Views\Shop\EditItem.cshtml" />
+    <Content Include="Views\Shop\CategoryMenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Items\" />
     <Folder Include="Areas\Admin\Views\Shop\" />
     <Folder Include="Areas\Collab\Models\" />
+    <Folder Include="Views\Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

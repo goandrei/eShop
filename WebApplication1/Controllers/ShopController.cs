@@ -14,6 +14,10 @@ namespace WebApplication1.Controllers
 {
     public class ShopController : Controller
     {
+        //public ActionResult Index()
+        //{
+        //    return RedirectToAction();
+        //}
         // GET: Shop/Items
         public ActionResult Items(int? page, int? catID)
         {
@@ -169,6 +173,18 @@ namespace WebApplication1.Controllers
 
                 return RedirectToAction("Items");
             }
+        }
+
+        public ActionResult CategoryMenuPartial()
+        {
+            List<CategoryVM> categoryList;
+
+            using (Db db = new Db())
+            {
+                categoryList = db.Categories.ToArray().Select(x => new CategoryVM(x)).ToList();
+            }
+
+            return PartialView(categoryList);
         }
     }
 }
