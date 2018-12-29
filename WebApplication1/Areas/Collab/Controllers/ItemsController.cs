@@ -75,15 +75,6 @@ namespace WebApplication1.Areas.Collab.Controllers
             var path1 = Path.Combine(directory.ToString(), "Items");
             var path2 = Path.Combine(directory.ToString(), "Items" + id.ToString());
 
-            //if (!Directory.Exists(path1))
-            //{
-            //    Directory.CreateDirectory(path1);
-            //}
-            //if (!Directory.Exists(path2))
-            //{
-            //    Directory.CreateDirectory(path2);
-            //}
-
             if (file != null && file.ContentLength > 0)
             {
                 string extension = file.ContentType.ToLower();
