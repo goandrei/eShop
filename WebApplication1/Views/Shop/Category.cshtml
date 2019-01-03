@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication1.Models.ViewModels.Items.ItemsVM>
+
+@{
+    ViewBag.Title = ViewBag.CategoryName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.CategoryName</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (Model.Count() != 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Score
+            </th>
+            <th>
+                Image
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+                <td>
+                    <img src="~/Images/Uploads/Items@(item.Id).png" />
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h2>Sorry, no items in this category right now :(</h2>
+}
+

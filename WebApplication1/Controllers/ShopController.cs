@@ -186,5 +186,26 @@ namespace WebApplication1.Controllers
 
             return PartialView(categoryList);
         }
+
+        //GET: Shop/Category/name
+        public ActionResult Category(string name)
+        {
+            List<ItemsVM> itemList;
+
+            using (Db db = new Db())
+            {
+                CategoriesDTO categoryDTO = db.Categories.Where(x => x.Name == name).FirstOrDefault();
+
+                int catId = categoryDTO.Id;
+
+                itemList = db.Items.ToArray().Where(x => x.CategoryId == catId).Select(x => new ItemsVM(x))
+                    .ToList();
+
+                var itemCat = db.Items.Where(x => x.CategoryId == catId).FirstOrDefault();
+
+                ViewBag.CategoryName = name;
+            }
+            return View(itemList);
+        }
     }
 }
