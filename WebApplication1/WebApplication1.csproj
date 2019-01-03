@@ -165,6 +165,7 @@
     <Compile Include="Areas\Admin\Controllers\RequestsController.cs" />
     <Compile Include="Areas\Collab\CollabAreaRegistration.cs" />
     <Compile Include="Areas\Collab\Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,6 +235,9 @@
     <Content Include="Views\Shop\Items.cshtml" />
     <Content Include="Views\Shop\EditItem.cshtml" />
     <Content Include="Views\Shop\CategoryMenuPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Shared\_LayoutWithoutCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

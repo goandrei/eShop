@@ -14,11 +14,11 @@ namespace WebApplication1.Controllers
 {
     public class ShopController : Controller
     {
-        //public ActionResult Index()
-        //{
-        //    return RedirectToAction();
-        //}
-        // GET: Shop/Items
+        public ActionResult Index()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        //GET: Shop/Items
         public ActionResult Items(int? page, int? catID)
         {
             //Declare list of ItemVM
