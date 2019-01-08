@@ -1,0 +1,164 @@
+﻿@model IEnumerable<WebApplication1.Models.ViewModels.Cart.CartVM>
+
+@{
+    ViewBag.Title = "Cart Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cart Details</h2>
+
+@if (ViewBag.Message != null)
+{
+    <h3>
+        @ViewBag.Message
+    </h3>
+}
+else { 
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+    <table class="table">
+        <tr>
+            <th>
+                Title:
+            </th>
+            <th>
+                Quantity:
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+
+            </th>
+            <th>
+                Total
+            </th>
+            <th>
+                
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td class="qty@(item.ItemID)">
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <img src="~/Images/Uploads/Items@(item.ItemID).png" />
+                </td>
+                <td>
+                    <a href="#" class="incrproduct" data-id="@item.ItemID">+</a>
+                    <a href="#" class="decrproduct" data-id="@item.ItemID">-</a>
+                    <a href="#" class="removeproduct" data-id="@item.ItemID">Remove</a>
+                </td>
+
+                <td class="total@(item.ItemID)">
+                    @Html.DisplayFor(modelItem => item.Total) RON
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="grandtotal">
+                <b>Grand Total</b>
+                <span>@ViewBag.GrandTotal</span> RON
+            </td>
+        </tr>
+    </table>
+}
+
+@section Scripts{
+    <script>
+        $(function() {
+            //increment product qry
+            $("a.incrproduct").click(function(e) {
+                e.preventDefault();
+
+                var itemID = $(this).data("id");
+                var url = "/cart/IncrementProduct";
+
+                $.getJSON(url,
+                    { itemID: itemID },
+                    function(data) {
+                        $("td.qty" + itemID).html(data.qty);
+
+                        var price = data.qty * data.price;
+                        var priceHtml = "$" + price.toFixed(2);
+
+                        $("td.total" + itemID).html(priceHtml);
+
+                        var gt = parseFloat($("td.grandtotal span").text())
+                        var grandtotal = (gt + data.price).toFixed(2);
+
+                        $("td.grandtotal span").text(grandtotal);
+                    });
+            });
+
+            //Decrement product qry
+            $("a.decrproduct").click(function(e) {
+                e.preventDefault();
+
+                var itemID = $(this).data("id");
+                var url = "/cart/DecrementProduct";
+
+                $.getJSON(url,
+                    { itemID: itemID },
+                    function(data) {
+                        $("td.qty" + itemID).html(data.qty);
+
+                        var price = data.qty * data.price;
+                        var priceHtml = "$" + price.toFixed(2);
+
+                        $("td.total" + itemID).html(priceHtml);
+
+                        var gt = parseFloat($("td.grandtotal span").text())
+                        var grandtotal = (gt - data.price).toFixed(2);
+
+                        $("td.grandtotal span").text(grandtotal);
+                    });
+            });
+
+            //Remove product
+            $("a.removeproduct").click(function (e) {
+                e.preventDefault();
+
+                var itemID = $(this).data("id");
+                var url = "/cart/RemoveProduct";
+
+                $.getJSON(url,
+                    { itemID: itemID },
+                    function (data) {
+                        $("td.qty" + itemID).html(data.qty);
+
+                        var price = data.qty * data.price;
+                        var priceHtml = "$" + price.toFixed(2);
+
+                        $("td.total" + itemID).html(priceHtml);
+
+                        var gt = parseFloat($("td.grandtotal span").text())
+                        var grandtotal = (gt - price).toFixed(2);
+
+                        $("td.grandtotal span").text(grandtotal);
+                    });
+
+                this.closest('tr').remove();
+            });
+        });
+    </script>
+}

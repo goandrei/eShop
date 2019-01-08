@@ -1,0 +1,62 @@
+﻿@model WebApplication1.Models.ViewModels.Items.ItemsVM
+
+@{
+    ViewBag.Title = "Item Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<br/>
+
+<div class="row">
+    <div class="col-xs-12 col-md-4">
+        <img src="/Images/Uploads/Items@(Model.Id).png"/>
+    </div>
+    
+    <div class="col-xs-12 col-md-8 move">
+        <p>
+            <b>Description :</b> @Html.DisplayFor(model => model.Description)
+        </p>
+        
+        <br/>
+        <p>
+            <b>Price:</b> @Html.DisplayFor(model => model.Price) RON
+        </p>
+        <br/>
+
+        <div class="addtocart">
+            <a href="#" class="addtocart">Add to cart</a>
+            <span class="ajaxmsg">The item has been aded to your cart.</span>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function() {
+            //Add to cart
+            $("a.addtocart").click(function(e) {
+                e.preventDefault();
+
+                $("span.loader").addClass("ib");
+
+                var url = "/cart/AddToCartPartial";
+
+                $.get(url,
+                    { id: @Model.Id },
+                    function(data) {
+                        $(".ajaxcart").html(data);
+                    }).done(function() {
+                        $("span.ajaxmsg").addClass("ib");
+                    setTimeout(function() {
+                        $("span.ajaxmsg").fadeOut("fast");
+                        $("span.ajaxmsg").removeClass("ib");
+                        $("span.loader").removeClass("ib");
+                        },
+                        1000);
+                });
+            });
+        });
+    </script>
+}
+

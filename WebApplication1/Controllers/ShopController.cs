@@ -207,5 +207,30 @@ namespace WebApplication1.Controllers
             }
             return View(itemList);
         }
+
+        //GET: shop/item-details/name
+        [ActionName("item-details")]
+        public ActionResult ItemDetails(string name)
+        {
+            ItemsVM model;
+            ItemsDTO item;
+
+            int id = 0;
+
+            using (Db db = new Db())
+            {
+                if (!db.Items.Any(x => x.Title.Equals(name)))
+                {
+                    return RedirectToAction("Index", "Shop");
+                }
+
+                item = db.Items.Where(x => x.Title == name).FirstOrDefault();
+
+                id = item.Id;
+
+                model = new ItemsVM(item);
+            }
+            return View("ItemDetails",  model);
+        }
     }
 }

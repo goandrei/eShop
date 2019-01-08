@@ -13,11 +13,20 @@ namespace WebApplication1
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+           
             routes.MapRoute(
                 "Shop", 
                 "Shop/{action}/{name}",
                 new { controller = "Shop", action = "Index", name = UrlParameter.Optional },
-                new[] { "WebApplication1.Controllers" });
+                new[] { "WebApplication1.Controllers" }
+            );
+            routes.MapRoute(
+                "Cart",
+                "Cart/{action}/{id}",
+                new { controller = "Cart", action = "Index", id = UrlParameter.Optional },
+                new[] { "WebApplication1.Controllers" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

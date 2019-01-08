@@ -24,6 +24,9 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+                <ul class="navbar-collapse collapse navbar-right">
+                    @Html.Action("CartPartial", "Cart")
+                </ul>
             </div>
         </div>
     </div>

@@ -47,7 +47,9 @@
                     @Html.DisplayFor(modelItem => item.Score)
                 </td>
                 <td>
-                    <img src="~/Images/Uploads/Items@(item.Id).png" />
+                    <a href="/shop/item-details/@item.Title">
+                        <img src="~/Images/Uploads/Items@(item.Id).png" />
+                    </a>
                 </td>
             </tr>
         }
